@@ -1,0 +1,12 @@
+<div class="space-y-4 py-2">
+    <div>
+        <label class="block text-sm font-medium text-gray-400 mb-2">Interface Theme</label>
+        <div class="relative max-w-xs">
+            <select id="themes-quickpick" class="w-full bg-dark-800 border-none rounded-xl px-4 py-2.5 text-sm text-white focus:ring-1 focus:ring-accent transition-all cursor-pointer appearance-none" onchange="window.themes && window.themes.apply(this.value, true)"></select>
+            <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-gray-500">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+        </div>
+        <p class="text-[11px] text-gray-600 mt-2 italic">Settings are saved to the server.</p>
+    </div>
+</div>
