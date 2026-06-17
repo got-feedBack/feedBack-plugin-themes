@@ -1,6 +1,6 @@
 # Slopsmith Plugin: Themes
 
-A plugin for [Slopsmith](https://github.com/byrongamatos/slopsmith) that allows basic recoloring.
+A plugin for [Slopsmith](https://github.com/got-feedback/feedback) that allows basic recoloring.
 
 <img width="992" height="832" alt="image" src="https://github.com/user-attachments/assets/c3fc7f85-1f2e-46ab-841f-80ec091d4b68" />
 
