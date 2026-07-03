@@ -1,0 +1,14 @@
+{
+  "id": "themes",
+  "name": "Themes",
+  "version": "1.0.0",
+  "script": "screen.js",
+  "settings": {
+    "html": "settings.html",
+    "category": "graphics"
+  },
+  "routes": "routes.py",
+  "category": "tools",
+  "description": "Custom color themes and skins.",
+  "icon": "assets/thumb.svg"
+}
