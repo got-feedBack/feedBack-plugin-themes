@@ -169,7 +169,7 @@
         },
         'classic-dark': {
             name: 'Classic Dark',
-            desc: 'The original Slopsmith. Deep navy and muted slate.',
+            desc: 'The original feedBack. Deep navy and muted slate.',
             swatches: ['#0a0a12', '#161b22', '#4080e0', '#e8c040'],
             colors: {
                 bg900: '#0a0a12', bg800: '#11111d', bg700: '#161625', bg600: '#1c1c30', bg500: '#22223b',
