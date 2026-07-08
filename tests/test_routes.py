@@ -2,6 +2,8 @@
 
 import json
 
+import pytest
+
 from routes import DEFAULT_ACTIVE
 
 CONFIG_URL = "/api/plugins/themes/config"
@@ -24,11 +26,11 @@ def test_set_and_get_roundtrip(client, config_dir):
     assert on_disk == {"active": "matrix"}
 
 
-def test_set_falsy_active_falls_back_to_default(client):
-    for body in ({"active": ""}, {"active": None}, {}):
-        r = client.post(CONFIG_URL, json=body)
-        assert r.status_code == 200
-        assert r.json()["active"] == DEFAULT_ACTIVE
+@pytest.mark.parametrize("body", [{"active": ""}, {"active": None}, {}])
+def test_set_falsy_active_falls_back_to_default(client, body):
+    r = client.post(CONFIG_URL, json=body)
+    assert r.status_code == 200
+    assert r.json()["active"] == DEFAULT_ACTIVE
 
 
 def test_non_string_active_is_stringified(client):
@@ -43,11 +45,11 @@ def test_get_recovers_from_corrupt_file(client, config_dir):
     assert client.get(CONFIG_URL).json() == {"active": DEFAULT_ACTIVE}
 
 
-def test_get_recovers_from_wrong_shape(client, config_dir):
+@pytest.mark.parametrize("bad", ['["list"]', '{"other": 1}', '"just a string"'])
+def test_get_recovers_from_wrong_shape(client, config_dir, bad):
     config_dir.mkdir(parents=True, exist_ok=True)
-    for bad in ('["list"]', '{"other": 1}', '"just a string"'):
-        (config_dir / "themes.json").write_text(bad, encoding="utf-8")
-        assert client.get(CONFIG_URL).json() == {"active": DEFAULT_ACTIVE}
+    (config_dir / "themes.json").write_text(bad, encoding="utf-8")
+    assert client.get(CONFIG_URL).json() == {"active": DEFAULT_ACTIVE}
 
 
 def test_set_overwrites_corrupt_file(client, config_dir):
