@@ -430,6 +430,12 @@ html[data-sm-theme] ::-webkit-scrollbar-thumb:hover { background: rgb(var(--sm-s
         sel.value = activeId;
     }
 
+    // Node-only export hook for tests; browsers fall through to init.
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = { normalizeColor, buildCss, PRESETS, CONFIG };
+        return;
+    }
+
     // --- Initialization ---
 
     // 1. Fast-path: Apply cached choice immediately to prevent FOUC
